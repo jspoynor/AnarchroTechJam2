@@ -1,0 +1,131 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctsvhig6brsn2"]
+
+[ext_resource type="Script" uid="uid://2apyaqt2l106" path="res://scripts/title_screen.gd" id="1_e54dn"]
+[ext_resource type="FontFile" uid="uid://dp5t11ytlcm2q" path="res://assets/fonts/Black Slider.ttf" id="1_fgkus"]
+[ext_resource type="Texture2D" uid="uid://c38gjf62lntlr" path="res://assets/online images/Свет_от_деревни_-_panoramio.jpg" id="1_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://dosx4itrgq00y" path="res://assets/online images/14.png" id="2_dc4i4"]
+[ext_resource type="Texture2D" uid="uid://cbcff5r1feqqd" path="res://assets/self-made/circle.png" id="2_mgrm8"]
+[ext_resource type="AudioStream" uid="uid://b08yrik0mki4o" path="res://assets/audio/Nancy Sinatra   Bang, Bang instrumental.mp3" id="3_mgrm8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e54dn"]
+
+[sub_resource type="Animation" id="Animation_dc4i4"]
+resource_name = "lens_flashing"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 0.840896, 1),
+"update": 0,
+"values": [6.0, 2.67, 6.0]
+}
+
+[sub_resource type="Animation" id="Animation_e54dn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.47]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3yumr"]
+_data = {
+&"RESET": SubResource("Animation_e54dn"),
+&"lens_flashing": SubResource("Animation_dc4i4")
+}
+
+[node name="titleScreen" type="Node2D"]
+script = ExtResource("1_e54dn")
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="background"]
+
+[node name="backgroundSprite" type="Sprite2D" parent="background"]
+scale = Vector2(1.36563, 1.36563)
+texture = ExtResource("1_s4lrb")
+
+[node name="phone" type="Sprite2D" parent="background"]
+modulate = Color(1, 1, 1, 0.196078)
+material = SubResource("CanvasItemMaterial_e54dn")
+position = Vector2(253, -13)
+scale = Vector2(0.00781249, 0.0195313)
+texture = ExtResource("2_dc4i4")
+
+[node name="PointLight2D" type="PointLight2D" parent="background"]
+z_index = 1
+position = Vector2(255, -17)
+scale = Vector2(0.359375, 0.359375)
+energy = 4.47
+blend_mode = 2
+texture = ExtResource("2_mgrm8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background"]
+libraries = {
+&"": SubResource("AnimationLibrary_3yumr")
+}
+autoplay = "lens_flashing"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.005
+anchor_bottom = 0.997
+offset_top = 116.0
+offset_right = -4.76001
+offset_bottom = -399.056
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Ballad of the"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fgkus")
+theme_override_font_sizes/font_size = 111
+text = "I-Pee-Hone"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.522
+anchor_top = 1.0
+anchor_right = 0.522
+anchor_bottom = 1.0
+offset_left = -109.344
+offset_top = -271.0
+offset_right = 106.656
+offset_bottom = -196.0
+text = "Play"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -33.0
+offset_right = 278.0
+offset_bottom = -10.0
+text = "Made for the AnachroTech Jam #2"
+
+[node name="musicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mgrm8")
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
