@@ -1,0 +1,12 @@
+~ start
+[speed=0.4]Every year, an estimated 19 million phones are dropped between couch cushions, car seats, and the abyssal gaps of daily life...
+[speed=0.4]Most never to be seen again until a desperate hand gropes blindly in the dark.
+[speed=0.4]Experts call this phenomenon "crevicular loss," a leading cause of delayed texts, missed calls, and existential reflection.
+[speed=0.4]Some say these tiny voids are just furniture flaws.
+[speed=0.4]Others suspect they're portals.
+[speed=0.4]Either way, once a phone slips through, it rarely comes back the same.
+do Global.emit_function("fade_out_black")
+
+~ transition
+#do Global.transition("res://scenes/play_scene_0.tscn")
+=> END

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtgs5g5rnl458"]
+
+[ext_resource type="AudioStream" uid="uid://b08yrik0mki4o" path="res://assets/audio/Nancy Sinatra   Bang, Bang instrumental.mp3" id="1_l62vy"]
+
+[node name="musicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_l62vy")
+autoplay = true

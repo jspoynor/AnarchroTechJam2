@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+IntroMusic="*res://scenes/introMusic.tscn"
+Global="*res://scripts/Global.gd"
 
 [display]
 
@@ -35,3 +37,7 @@ folder_colors={
 "res://assets/": "yellow",
 "res://scenes/": "teal"
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogue/intro_cutscene.dialogue")

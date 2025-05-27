@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctsvhig6brsn2"]
+[gd_scene load_steps=10 format=3 uid="uid://ctsvhig6brsn2"]
 
 [ext_resource type="Script" uid="uid://2apyaqt2l106" path="res://scripts/title_screen.gd" id="1_e54dn"]
 [ext_resource type="FontFile" uid="uid://dp5t11ytlcm2q" path="res://assets/fonts/Black Slider.ttf" id="1_fgkus"]
 [ext_resource type="Texture2D" uid="uid://c38gjf62lntlr" path="res://assets/online images/Свет_от_деревни_-_panoramio.jpg" id="1_s4lrb"]
 [ext_resource type="Texture2D" uid="uid://dosx4itrgq00y" path="res://assets/online images/14.png" id="2_dc4i4"]
 [ext_resource type="Texture2D" uid="uid://cbcff5r1feqqd" path="res://assets/self-made/circle.png" id="2_mgrm8"]
-[ext_resource type="AudioStream" uid="uid://b08yrik0mki4o" path="res://assets/audio/Nancy Sinatra   Bang, Bang instrumental.mp3" id="3_mgrm8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e54dn"]
 
@@ -123,9 +122,5 @@ offset_top = -33.0
 offset_right = 278.0
 offset_bottom = -10.0
 text = "Made for the AnachroTech Jam #2"
-
-[node name="musicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_mgrm8")
-autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
