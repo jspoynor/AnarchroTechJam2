@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cqtsag83hx1ii"]
+[gd_scene load_steps=44 format=3 uid="uid://cqtsag83hx1ii"]
 
 [ext_resource type="Texture2D" uid="uid://crfi8t6a5yx3o" path="res://assets/playscene0/Ground.png" id="1_nwqc3"]
 [ext_resource type="Texture2D" uid="uid://dc6gesy4fptpx" path="res://assets/playscene0/firewood.png" id="2_mjfla"]
@@ -13,14 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://t1t5jhs17hg6" path="res://assets/playscene0/sleeping bags bottom.png" id="10_m73q0"]
 [ext_resource type="Texture2D" uid="uid://cpkursxva2nhn" path="res://assets/characters/Silas Wainwritght.png" id="11_1yl1h"]
 [ext_resource type="Script" uid="uid://clatu2trvic41" path="res://scripts/player_character.gd" id="11_v0p6l"]
+[ext_resource type="Script" uid="uid://4fj7wbn3n5wo" path="res://scenes/foreground_sprites.gd" id="12_m73q0"]
 [ext_resource type="Texture2D" uid="uid://c60ypnyx1jfno" path="res://assets/playscene0/sleeping bags top.png" id="13_t47m7"]
 [ext_resource type="Texture2D" uid="uid://cc12h6yn1w22f" path="res://assets/bonfire/Layer 1.png" id="15_e4mwq"]
 [ext_resource type="Texture2D" uid="uid://cjcsaxmsj7k4l" path="res://assets/bonfire/Background.png" id="16_k86bk"]
+[ext_resource type="Texture2D" uid="uid://cbcff5r1feqqd" path="res://assets/self-made/circle.png" id="16_t47m7"]
 [ext_resource type="AudioStream" uid="uid://coq76o8r0f7kj" path="res://assets/audio/campfire-crackling-fireplace-sound-119594.mp3" id="17_k86bk"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4mwq"]
-radius = 5.0
-height = 12.0
 
 [sub_resource type="Animation" id="Animation_e4mwq"]
 resource_name = "smokeWobble"
@@ -94,6 +92,10 @@ animations = [{
 "speed": 0.6
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4mwq"]
+radius = 5.0
+height = 12.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0p6l"]
 size = Vector2(38, 9)
 
@@ -133,13 +135,10 @@ size = Vector2(12, 448)
 size = Vector2(20, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6j76"]
-size = Vector2(71, 40)
+size = Vector2(71, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjhwy"]
-size = Vector2(46, 19)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_penc7"]
-size = Vector2(37, 11)
+size = Vector2(46, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8y7ls"]
 size = Vector2(49, 17)
@@ -149,6 +148,9 @@ size = Vector2(25, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmtcp"]
 size = Vector2(7.375, 2.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onfj8"]
+size = Vector2(62, 13)
 
 [node name="playScene0" type="Node2D"]
 texture_filter = 1
@@ -177,11 +179,54 @@ texture = ExtResource("7_v0p6l")
 [node name="smallRocks" type="Sprite2D" parent="backgroundSprites"]
 texture = ExtResource("8_e4mwq")
 
-[node name="cart" type="Sprite2D" parent="backgroundSprites"]
-texture = ExtResource("9_k86bk")
-
 [node name="sleepingBagsBottom" type="Sprite2D" parent="backgroundSprites"]
 texture = ExtResource("10_m73q0")
+
+[node name="foregroundSprites" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("12_m73q0")
+
+[node name="cart" type="Sprite2D" parent="foregroundSprites"]
+position = Vector2(0, -75)
+texture = ExtResource("9_k86bk")
+offset = Vector2(0, 76.22)
+
+[node name="smoke" type="Sprite2D" parent="foregroundSprites"]
+modulate = Color(1, 1, 1, 0.584314)
+position = Vector2(-195, -45)
+texture = ExtResource("5_06711")
+centered = false
+offset = Vector2(-88.68, -54.885)
+region_enabled = true
+region_rect = Rect2(4.75296, 111.317, 107.465, 58.2225)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="foregroundSprites/smoke"]
+libraries = {
+&"": SubResource("AnimationLibrary_m73q0")
+}
+autoplay = "smokeWobble"
+
+[node name="craterPhone" type="Sprite2D" parent="foregroundSprites"]
+position = Vector2(-195, -46)
+texture = ExtResource("6_73o0r")
+offset = Vector2(196.09, 45.525)
+
+[node name="sleepingBagsTop" type="Sprite2D" parent="foregroundSprites"]
+position = Vector2(0, -42)
+texture = ExtResource("13_t47m7")
+offset = Vector2(0, 41.885)
+
+[node name="fire" type="AnimatedSprite2D" parent="foregroundSprites"]
+position = Vector2(43, 10)
+sprite_frames = SubResource("SpriteFrames_m73q0")
+autoplay = "default"
+frame_progress = 0.792154
+
+[node name="PointLight2D" type="PointLight2D" parent="foregroundSprites/fire"]
+position = Vector2(0, 6)
+energy = 0.8
+texture = ExtResource("16_t47m7")
+texture_scale = 0.2
 
 [node name="playerCharacter" type="CharacterBody2D" parent="."]
 position = Vector2(-28, -51)
@@ -201,36 +246,6 @@ limit_bottom = 210
 position = Vector2(0, 10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_e4mwq")
-
-[node name="foregroundSprites" type="Node2D" parent="."]
-texture_filter = 1
-
-[node name="smoke" type="Sprite2D" parent="foregroundSprites"]
-modulate = Color(1, 1, 1, 0.584314)
-position = Vector2(-195, -45)
-texture = ExtResource("5_06711")
-centered = false
-offset = Vector2(-88.68, -54.885)
-region_enabled = true
-region_rect = Rect2(4.75296, 111.317, 107.465, 58.2225)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="foregroundSprites/smoke"]
-libraries = {
-&"": SubResource("AnimationLibrary_m73q0")
-}
-autoplay = "smokeWobble"
-
-[node name="craterPhone" type="Sprite2D" parent="foregroundSprites"]
-texture = ExtResource("6_73o0r")
-
-[node name="sleepingBagsTop" type="Sprite2D" parent="foregroundSprites"]
-texture = ExtResource("13_t47m7")
-
-[node name="fire" type="AnimatedSprite2D" parent="foregroundSprites"]
-position = Vector2(43, 10)
-sprite_frames = SubResource("SpriteFrames_m73q0")
-autoplay = "default"
-frame_progress = 0.405329
 
 [node name="colliders" type="Node2D" parent="."]
 
@@ -407,16 +422,12 @@ shape = SubResource("RectangleShape2D_x5i3j")
 [node name="cartColliders" type="StaticBody2D" parent="colliders"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/cartColliders"]
-position = Vector2(174.5, -86)
+position = Vector2(174.5, -73.5)
 shape = SubResource("RectangleShape2D_u6j76")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/cartColliders"]
-position = Vector2(116, -75.5)
+position = Vector2(116, -73.5)
 shape = SubResource("RectangleShape2D_tjhwy")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/cartColliders"]
-position = Vector2(120.5, -86.5)
-shape = SubResource("RectangleShape2D_penc7")
 
 [node name="bigRockColliders" type="StaticBody2D" parent="colliders"]
 
@@ -453,6 +464,12 @@ shape = SubResource("RectangleShape2D_lmtcp")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/sleepingBagColliders"]
 position = Vector2(1, -30)
 shape = SubResource("RectangleShape2D_lmtcp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/StaticBody2D"]
+position = Vector2(-195, -40.5)
+shape = SubResource("RectangleShape2D_onfj8")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(42, 17)
