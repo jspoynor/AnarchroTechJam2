@@ -20,6 +20,31 @@
 [ext_resource type="Texture2D" uid="uid://cbcff5r1feqqd" path="res://assets/self-made/circle.png" id="16_t47m7"]
 [ext_resource type="AudioStream" uid="uid://coq76o8r0f7kj" path="res://assets/audio/campfire-crackling-fireplace-sound-119594.mp3" id="17_k86bk"]
 
+[sub_resource type="Animation" id="Animation_k86bk"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_e4mwq"]
 resource_name = "smokeWobble"
 length = 7.0
@@ -45,31 +70,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.33, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 3.5, 7)
-}
-
-[sub_resource type="Animation" id="Animation_k86bk"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m73q0"]
@@ -220,7 +220,7 @@ offset = Vector2(0, 41.885)
 position = Vector2(43, 10)
 sprite_frames = SubResource("SpriteFrames_m73q0")
 autoplay = "default"
-frame_progress = 0.792154
+frame_progress = 0.0475205
 
 [node name="PointLight2D" type="PointLight2D" parent="foregroundSprites/fire"]
 position = Vector2(0, 6)
