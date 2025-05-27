@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var canvas_layer = $CanvasLayer
 @onready var animation_player = $AnimationPlayer
 @onready var label = $CanvasLayer/Label
 @onready var undertale_sound = $undertaleSound
@@ -11,6 +12,7 @@ func _ready():
 	DialogueManager.show_dialogue_balloon(intro_dialogue)
 	Global.connect("call_function", call_function)
 	label.visible = false
+	canvas_layer.visible = true
 
 func _process(delta):
 	if label.visible && Input.is_action_just_pressed("ui_accept"):

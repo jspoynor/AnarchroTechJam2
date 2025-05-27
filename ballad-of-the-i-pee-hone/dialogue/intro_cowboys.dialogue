@@ -1,5 +1,19 @@
 ~ start
-Nathan: Hey
+Dusty "Maps" McGraw: The stars swear we’re drifting south of the Platte. One more wrong step and we’ll be marching straight back to St. Louis.
+Clara “Six Shot” Bell: Stars don’t feed a gut, Dusty. Point that compass at something with meat on its bones.
+Elijah Twotrees: The wind carries coyote song tonight. Walk loud, and thirst will track us like shadow.
+Silas Wainwright: Warnings are wasted on men without ambition. Dawn will show profit to those bold enough to claim it.
+A pot hisses beside Big Martha. she lifts the lid, steam feathering up into the cold air.
+Big Martha: Ambition won’t fill canteens. Two swallows each tomorrow—argue and I’ll cut it to one.
+Percival “Percy” Dimsdale III: Two? Barbaric. My skin wilts in this savage oven you call a frontier.
+Dusty: Quit wilting, Percy. At sunrise I climb that mesa. Providence owes us water, and I aim to collect.
+Clara: Miss again, Mapman, and you’ll dance ten paces while I count. Hope your boots remember the steps.
+Elijah: Circles guide the hunter home. At the beginning, signs reveal themselves.
+Silas: When that sign appears, recall who offered terms before it shone for the rest of you.
+Martha ladles out thin stew, its smell more ash than broth.
+Big Martha: Terms taste bitter; supper tastes worse when burnt. Eat now or the horse gets seconds.
+Percy:  If civilization won’t come to rescue us, at least pass the pepper. This broth stinks of despair.
+The ember-small fire pops, as if in agreement, and the night swallows their words.
 
 do Global.transition("res://scenes/play_scene_0.tscn")
 => END

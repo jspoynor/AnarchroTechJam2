@@ -86,6 +86,7 @@ script = ExtResource("1_vuduy")
 sprite_frames = SubResource("SpriteFrames_vuduy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = -1
