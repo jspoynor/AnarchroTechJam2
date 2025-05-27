@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ballad of the I-Pee-Hone"
-run/main_scene="uid://ctsvhig6brsn2"
+run/main_scene="uid://cqtsag83hx1ii"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

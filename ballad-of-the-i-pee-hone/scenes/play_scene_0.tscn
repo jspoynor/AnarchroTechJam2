@@ -1,0 +1,462 @@
+[gd_scene load_steps=42 format=3 uid="uid://cqtsag83hx1ii"]
+
+[ext_resource type="Texture2D" uid="uid://crfi8t6a5yx3o" path="res://assets/playscene0/Ground.png" id="1_nwqc3"]
+[ext_resource type="Texture2D" uid="uid://dc6gesy4fptpx" path="res://assets/playscene0/firewood.png" id="2_mjfla"]
+[ext_resource type="Texture2D" uid="uid://b4bu8d6smtb0r" path="res://assets/playscene0/crater.png" id="4_q7wjp"]
+[ext_resource type="Texture2D" uid="uid://xoerjhe28x7p" path="res://assets/playscene0/smoke.png" id="5_06711"]
+[ext_resource type="Texture2D" uid="uid://ckrwjajdk1w6o" path="res://assets/playscene0/big rock.png" id="5_fn2b8"]
+[ext_resource type="Texture2D" uid="uid://77m43k3nlmcb" path="res://assets/playscene0/cacti.png" id="6_1yl1h"]
+[ext_resource type="Texture2D" uid="uid://bwg0fpb05wlpx" path="res://assets/playscene0/crater phone.png" id="6_73o0r"]
+[ext_resource type="Texture2D" uid="uid://cpyu18ggc5dh1" path="res://assets/playscene0/log seats.png" id="7_v0p6l"]
+[ext_resource type="Texture2D" uid="uid://0aw33ki6b04r" path="res://assets/playscene0/rocks.png" id="8_e4mwq"]
+[ext_resource type="Texture2D" uid="uid://bnm1mwyagemtk" path="res://assets/playscene0/cart.png" id="9_k86bk"]
+[ext_resource type="Texture2D" uid="uid://t1t5jhs17hg6" path="res://assets/playscene0/sleeping bags bottom.png" id="10_m73q0"]
+[ext_resource type="Texture2D" uid="uid://cpkursxva2nhn" path="res://assets/characters/Silas Wainwritght.png" id="11_1yl1h"]
+[ext_resource type="Script" uid="uid://clatu2trvic41" path="res://scripts/player_character.gd" id="11_v0p6l"]
+[ext_resource type="Texture2D" uid="uid://c60ypnyx1jfno" path="res://assets/playscene0/sleeping bags top.png" id="13_t47m7"]
+[ext_resource type="Texture2D" uid="uid://cc12h6yn1w22f" path="res://assets/bonfire/Layer 1.png" id="15_e4mwq"]
+[ext_resource type="Texture2D" uid="uid://cjcsaxmsj7k4l" path="res://assets/bonfire/Background.png" id="16_k86bk"]
+[ext_resource type="AudioStream" uid="uid://coq76o8r0f7kj" path="res://assets/audio/campfire-crackling-fireplace-sound-119594.mp3" id="17_k86bk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4mwq"]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="Animation" id="Animation_e4mwq"]
+resource_name = "smokeWobble"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.33, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.5, 7)
+}
+
+[sub_resource type="Animation" id="Animation_k86bk"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m73q0"]
+_data = {
+&"RESET": SubResource("Animation_k86bk"),
+&"smokeWobble": SubResource("Animation_e4mwq")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m73q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_e4mwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_k86bk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.6
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0p6l"]
+size = Vector2(38, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4mwq"]
+size = Vector2(34.4053, 9.78151)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k86bk"]
+size = Vector2(8.58733, 17.845)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m73q0"]
+size = Vector2(33, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t47m7"]
+size = Vector2(10, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i62a"]
+size = Vector2(29.3654, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on0ac"]
+size = Vector2(34, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eym7d"]
+size = Vector2(11, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkkxj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqeve"]
+size = Vector2(15, 432)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47h1m"]
+size = Vector2(591, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kq1f4"]
+size = Vector2(12, 448)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5i3j"]
+size = Vector2(20, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6j76"]
+size = Vector2(71, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjhwy"]
+size = Vector2(46, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_penc7"]
+size = Vector2(37, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y7ls"]
+size = Vector2(49, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcsc2"]
+size = Vector2(25, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmtcp"]
+size = Vector2(7.375, 2.5)
+
+[node name="playScene0" type="Node2D"]
+texture_filter = 1
+
+[node name="backgroundSprites" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="floor" type="Sprite2D" parent="backgroundSprites"]
+texture = ExtResource("1_nwqc3")
+
+[node name="firewood" type="Sprite2D" parent="backgroundSprites"]
+texture = ExtResource("2_mjfla")
+
+[node name="crater" type="Sprite2D" parent="backgroundSprites"]
+texture = ExtResource("4_q7wjp")
+
+[node name="bigRock" type="Sprite2D" parent="backgroundSprites"]
+texture = ExtResource("5_fn2b8")
+
+[node name="cacti" type="Sprite2D" parent="backgroundSprites"]
+texture = ExtResource("6_1yl1h")
+
+[node name="logSeats" type="Sprite2D" parent="backgroundSprites"]
+texture = ExtResource("7_v0p6l")
+
+[node name="smallRocks" type="Sprite2D" parent="backgroundSprites"]
+texture = ExtResource("8_e4mwq")
+
+[node name="cart" type="Sprite2D" parent="backgroundSprites"]
+texture = ExtResource("9_k86bk")
+
+[node name="sleepingBagsBottom" type="Sprite2D" parent="backgroundSprites"]
+texture = ExtResource("10_m73q0")
+
+[node name="playerCharacter" type="CharacterBody2D" parent="."]
+position = Vector2(-28, -51)
+script = ExtResource("11_v0p6l")
+
+[node name="Sprite2D" type="Sprite2D" parent="playerCharacter"]
+texture = ExtResource("11_1yl1h")
+
+[node name="Camera2D" type="Camera2D" parent="playerCharacter"]
+zoom = Vector2(6, 6)
+limit_left = -287
+limit_top = -210
+limit_right = 287
+limit_bottom = 210
+
+[node name="backgroundCollider" type="CollisionShape2D" parent="playerCharacter"]
+position = Vector2(0, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e4mwq")
+
+[node name="foregroundSprites" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="smoke" type="Sprite2D" parent="foregroundSprites"]
+modulate = Color(1, 1, 1, 0.584314)
+position = Vector2(-195, -45)
+texture = ExtResource("5_06711")
+centered = false
+offset = Vector2(-88.68, -54.885)
+region_enabled = true
+region_rect = Rect2(4.75296, 111.317, 107.465, 58.2225)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="foregroundSprites/smoke"]
+libraries = {
+&"": SubResource("AnimationLibrary_m73q0")
+}
+autoplay = "smokeWobble"
+
+[node name="craterPhone" type="Sprite2D" parent="foregroundSprites"]
+texture = ExtResource("6_73o0r")
+
+[node name="sleepingBagsTop" type="Sprite2D" parent="foregroundSprites"]
+texture = ExtResource("13_t47m7")
+
+[node name="fire" type="AnimatedSprite2D" parent="foregroundSprites"]
+position = Vector2(43, 10)
+sprite_frames = SubResource("SpriteFrames_m73q0")
+autoplay = "default"
+frame_progress = 0.405329
+
+[node name="colliders" type="Node2D" parent="."]
+
+[node name="bonfireColliders" type="StaticBody2D" parent="colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/bonfireColliders"]
+position = Vector2(14, -10)
+rotation = -0.096041
+shape = SubResource("RectangleShape2D_v0p6l")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/bonfireColliders"]
+position = Vector2(84, -5)
+rotation = 0.372692
+shape = SubResource("RectangleShape2D_e4mwq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/bonfireColliders"]
+position = Vector2(93, 26)
+rotation = 0.345061
+shape = SubResource("RectangleShape2D_k86bk")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="colliders/bonfireColliders"]
+position = Vector2(43, 16.5)
+shape = SubResource("RectangleShape2D_m73q0")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="colliders/bonfireColliders"]
+position = Vector2(-11, 19)
+rotation = -0.167442
+shape = SubResource("RectangleShape2D_t47m7")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="colliders/bonfireColliders"]
+position = Vector2(20.8274, 44.9401)
+rotation = 0.333728
+shape = SubResource("RectangleShape2D_1i62a")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="colliders/bonfireColliders"]
+position = Vector2(50, 49)
+rotation = -0.0311904
+shape = SubResource("RectangleShape2D_on0ac")
+
+[node name="cactusColliders" type="StaticBody2D" parent="colliders"]
+position = Vector2(-71, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/cactusColliders"]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_eym7d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/cactusColliders"]
+position = Vector2(12, -6)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/cactusColliders"]
+position = Vector2(-8, 5)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="cactusColliders2" type="StaticBody2D" parent="colliders"]
+position = Vector2(-266, 43)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/cactusColliders2"]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_eym7d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/cactusColliders2"]
+position = Vector2(12, -6)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/cactusColliders2"]
+position = Vector2(-8, 5)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="cactusColliders3" type="StaticBody2D" parent="colliders"]
+position = Vector2(218, -166)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/cactusColliders3"]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_eym7d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/cactusColliders3"]
+position = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/cactusColliders3"]
+position = Vector2(-14, -6)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="cactusColliders4" type="StaticBody2D" parent="colliders"]
+position = Vector2(151, 89)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/cactusColliders4"]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_eym7d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/cactusColliders4"]
+position = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/cactusColliders4"]
+position = Vector2(-14, -6)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="cactusColliders5" type="StaticBody2D" parent="colliders"]
+position = Vector2(-156, -189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/cactusColliders5"]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_eym7d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/cactusColliders5"]
+position = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/cactusColliders5"]
+position = Vector2(-14, -6)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="cactusColliders6" type="StaticBody2D" parent="colliders"]
+position = Vector2(-149, 189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/cactusColliders6"]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_eym7d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/cactusColliders6"]
+position = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/cactusColliders6"]
+position = Vector2(-14, -6)
+shape = SubResource("RectangleShape2D_lkkxj")
+
+[node name="levelBoundries" type="StaticBody2D" parent="colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/levelBoundries"]
+position = Vector2(-295.5, -3)
+shape = SubResource("RectangleShape2D_dqeve")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/levelBoundries"]
+position = Vector2(-7.5, 223)
+shape = SubResource("RectangleShape2D_47h1m")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="colliders/levelBoundries"]
+position = Vector2(-1, -201)
+shape = SubResource("RectangleShape2D_47h1m")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/levelBoundries"]
+position = Vector2(294, 9)
+shape = SubResource("RectangleShape2D_kq1f4")
+
+[node name="rockColliders" type="StaticBody2D" parent="colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/rockColliders"]
+position = Vector2(-81, 84.5)
+shape = SubResource("RectangleShape2D_x5i3j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/rockColliders"]
+position = Vector2(-258, 146)
+shape = SubResource("RectangleShape2D_x5i3j")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/rockColliders"]
+position = Vector2(30, 192)
+shape = SubResource("RectangleShape2D_x5i3j")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="colliders/rockColliders"]
+position = Vector2(195, 95)
+shape = SubResource("RectangleShape2D_x5i3j")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="colliders/rockColliders"]
+position = Vector2(47, -86)
+shape = SubResource("RectangleShape2D_x5i3j")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="colliders/rockColliders"]
+position = Vector2(-256, -118)
+shape = SubResource("RectangleShape2D_x5i3j")
+
+[node name="cartColliders" type="StaticBody2D" parent="colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/cartColliders"]
+position = Vector2(174.5, -86)
+shape = SubResource("RectangleShape2D_u6j76")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/cartColliders"]
+position = Vector2(116, -75.5)
+shape = SubResource("RectangleShape2D_tjhwy")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/cartColliders"]
+position = Vector2(120.5, -86.5)
+shape = SubResource("RectangleShape2D_penc7")
+
+[node name="bigRockColliders" type="StaticBody2D" parent="colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/bigRockColliders"]
+position = Vector2(-60.5, -104.5)
+shape = SubResource("RectangleShape2D_8y7ls")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/bigRockColliders"]
+position = Vector2(-64.5, -119.5)
+shape = SubResource("RectangleShape2D_lcsc2")
+
+[node name="sleepingBagColliders" type="StaticBody2D" parent="colliders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colliders/sleepingBagColliders"]
+position = Vector2(-28, -34)
+shape = SubResource("RectangleShape2D_lmtcp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colliders/sleepingBagColliders"]
+position = Vector2(27.25, -39)
+shape = SubResource("RectangleShape2D_lmtcp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="colliders/sleepingBagColliders"]
+position = Vector2(54, -33)
+shape = SubResource("RectangleShape2D_lmtcp")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="colliders/sleepingBagColliders"]
+position = Vector2(75, -32)
+shape = SubResource("RectangleShape2D_lmtcp")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="colliders/sleepingBagColliders"]
+position = Vector2(100, -26)
+shape = SubResource("RectangleShape2D_lmtcp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colliders/sleepingBagColliders"]
+position = Vector2(1, -30)
+shape = SubResource("RectangleShape2D_lmtcp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(42, 17)
+stream = ExtResource("17_k86bk")
+pitch_scale = 1.5
+autoplay = true
+max_distance = 150.0
